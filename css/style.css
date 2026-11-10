@@ -1,0 +1,116 @@
+/* Таплинк-лендинг пасеки Старчевских.
+   Layout: одна узкая колонка по центру, ссылки-плашки во всю ширину, отзывы лентой.
+   Палитра: тёмный тёплый фон и медовый акцент. */
+:root{
+  --bg:#17110b;
+  --surface:#231a11;
+  --surface-2:#2d2116;
+  --line:rgba(255,236,200,.10);
+  --text:#f6ecd9;
+  --muted:#b7a384;
+  --honey:#ffb81c;
+  --honey-ink:#2a1a00;
+  --head:'Unbounded','Arial Black',sans-serif;
+  --body:'Manrope',Arial,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:500 16px/1.5 var(--body);
+  background-image:radial-gradient(120% 60% at 50% -10%,rgba(255,184,28,.22),transparent 60%)}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:3px solid var(--honey);outline-offset:3px}
+.wrap{max-width:600px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+main.wrap{padding-block:28px 40px;display:flex;flex-direction:column;gap:36px}
+
+/* cover + title */
+.cover{position:relative;aspect-ratio:16/10;border-radius:26px;overflow:hidden;background:var(--surface);border:1.5px dashed rgba(255,184,28,.45);display:grid;place-items:center}
+.cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ph{display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px;text-align:center}
+.ph svg{width:42px;height:42px;color:var(--honey)}
+.ph b{font:500 16px/1.2 var(--head)}
+.ph span{font-size:13px;color:var(--muted)}
+.ph code{font:600 13px var(--body);background:var(--surface-2);padding:2px 7px;border-radius:6px;color:var(--text)}
+.intro{text-align:center;display:flex;flex-direction:column;gap:10px;margin-top:-8px}
+h1{margin:0;font:600 clamp(26px,7vw,34px)/1.1 var(--head);text-wrap:balance}
+.intro .sub{margin:0;font:600 16px/1.3 var(--head);color:var(--honey);text-wrap:balance}
+.intro p{margin:0 auto;max-width:44ch;color:var(--muted);font-size:15px}
+
+/* sections */
+.sec{display:flex;flex-direction:column;gap:12px;scroll-margin-top:72px}
+.sec-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+h2{margin:0;font:600 13px/1.2 var(--head);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:9px;height:9px;background:var(--honey);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+.lead{margin:0;color:var(--muted);font-size:15px}
+
+/* link rows */
+.link{display:flex;align-items:center;gap:14px;min-width:0;padding:12px 16px 12px 12px;background:var(--surface);border:1px solid var(--line);border-radius:20px;transition:transform .2s ease,border-color .2s ease,background .2s ease}
+.link:hover{transform:translateY(-2px);border-color:rgba(255,184,28,.6);background:var(--surface-2)}
+.ico{flex:none;width:46px;height:46px;border-radius:50%;background:var(--honey);color:var(--honey-ink);display:grid;place-items:center}
+.ico svg{width:24px;height:24px;display:block}
+.txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+.txt b{font:600 16px/1.25 var(--body);overflow-wrap:anywhere}
+.txt small{font-size:13px;color:var(--muted);overflow-wrap:anywhere}
+.chev{flex:none;width:18px;height:18px;color:var(--muted);transition:transform .2s ease,color .2s ease}
+.link:hover .chev{transform:translateX(3px);color:var(--honey)}
+.stack{display:flex;flex-direction:column;gap:10px}
+
+/* contact card */
+.contact{background:linear-gradient(160deg,rgba(255,184,28,.18),rgba(255,184,28,.04));border:1px solid rgba(255,184,28,.45);border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.contact small{font-size:13px;color:var(--muted)}
+.contact .who-name{font:600 19px/1.2 var(--head)}
+.contact .phone{font:700 24px/1.1 var(--body);font-variant-numeric:tabular-nums;user-select:all}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:12px 20px;border-radius:999px;background:var(--honey);color:var(--honey-ink);font:700 16px/1 var(--body);transition:transform .2s ease,filter .2s ease}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.btn svg{width:20px;height:20px}
+.btn.ghost{background:transparent;color:var(--honey);border:1.5px solid rgba(255,184,28,.6)}
+.btn.ghost:hover{background:rgba(255,184,28,.12)}
+.note{margin:0;font-size:13px;color:var(--muted)}
+
+/* reviews */
+.sum{display:grid;grid-template-columns:auto 1fr;gap:16px 24px;align-items:center;padding:18px;background:var(--surface);border:1px solid var(--line);border-radius:22px}
+.big{text-align:center}
+.big b{display:block;font:600 46px/1 var(--head);color:var(--honey)}
+.stars{color:var(--honey);letter-spacing:2px;font-size:15px;line-height:1}
+.big .stars{margin:8px 0 4px;font-size:16px}
+.big span{font-size:13px;color:var(--muted)}
+.bars{display:grid;gap:6px;min-width:0}
+.bars div{display:grid;grid-template-columns:12px 1fr 38px;gap:10px;align-items:center;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.bars i{display:block;height:7px;border-radius:4px;background:var(--surface-2);overflow:hidden}
+.bars i::after{content:"";display:block;height:100%;width:var(--w);background:var(--honey);border-radius:4px}
+.bars em{font-style:normal;text-align:right}
+.arrows{display:flex;gap:8px}
+.arrows button{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--text);display:grid;place-items:center;cursor:pointer;transition:border-color .2s,color .2s}
+.arrows button:hover{border-color:var(--honey);color:var(--honey)}
+.arrows svg{width:18px;height:18px}
+.track{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;scrollbar-width:thin;scrollbar-color:var(--surface-2) transparent;-webkit-overflow-scrolling:touch}
+.rev{flex:0 0 min(300px,84%);scroll-snap-align:start;margin:0;padding:16px;background:var(--surface);border:1px solid var(--line);border-radius:20px;display:flex;flex-direction:column;gap:12px}
+.who{display:flex;align-items:center;gap:12px;min-width:0}
+.av{flex:none;width:42px;height:42px;border-radius:50%;background:var(--honey);color:var(--honey-ink);display:grid;place-items:center;font:600 17px/1 var(--head)}
+.who div{min-width:0}
+.who b{display:block;font-weight:700;line-height:1.2}
+.who small{display:block;font-size:12.5px;color:var(--muted)}
+.rev blockquote{margin:0;font-size:15.5px;line-height:1.55}
+.rev-photo{display:block;width:100%;max-height:220px;object-fit:cover;border-radius:12px}
+@media(max-width:480px){.sum{grid-template-columns:1fr}}
+
+/* footer */
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:28px;text-align:center;font-size:14px;color:var(--muted)}
+footer p{margin:0}
+
+/* fixed bar: выезжает сверху при прокрутке */
+.stick{position:fixed;left:0;right:0;top:0;z-index:50;background:rgba(23,17,11,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px);transform:translateY(-100%);visibility:hidden;transition:transform .3s ease,visibility 0s .3s}
+.stick.on{transform:none;visibility:visible;transition:transform .3s ease}
+.stick .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px}
+.stick b{font:600 14px/1.2 var(--head);color:var(--honey);min-width:0}
+.stick nav{display:flex;gap:2px}
+.stick nav a{font-size:13.5px;font-weight:600;color:var(--muted);padding:8px 10px;border-radius:999px}
+.stick nav a:hover{color:var(--text);background:var(--surface-2)}
+@media(max-width:520px){.stick nav a:nth-child(n+3){display:none}}
+
+/* кнопка «наверх», слева снизу */
+#scroll-top{position:fixed;z-index:60;left:max(16px,env(safe-area-inset-left,0px));bottom:max(16px,calc(env(safe-area-inset-bottom,0px) + 8px));width:46px;height:46px;border:0;border-radius:50%;background:var(--honey);color:var(--honey-ink);display:grid;place-items:center;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(14px);transition:opacity .3s ease,transform .3s ease,visibility 0s .3s;box-shadow:0 6px 18px rgba(0,0,0,.4)}
+#scroll-top.on{opacity:1;visibility:visible;transform:none;transition:opacity .3s ease,transform .3s ease}
+#scroll-top svg{width:22px;height:22px;display:block}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.stick,#scroll-top,.link,.btn,.chev{transition:none}}
